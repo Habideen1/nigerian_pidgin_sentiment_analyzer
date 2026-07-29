@@ -2,7 +2,7 @@
 
 A Machine Learning and Natural Language Processing (NLP) project that automatically classifies Nigerian Pidgin text into **Positive**, **Negative**, or **Neutral** sentiments.
 
-This project is being developed as part of the **3 Million Technical Talent (3MTT) AI/ML Capstone Project** and follows an end-to-end Machine Learning workflow—from data acquisition and preprocessing to model training, evaluation, and deployment.
+This project is being developed as part of the **3 Million Technical Talent (3MTT) AI/ML Capstone Project** and follows an end-to-end Machine Learning workflow—from data acquisition and preprocessing to feature engineering, model training, evaluation, and deployment.
 
 
 # Project Objective
@@ -69,9 +69,15 @@ nigerian_pidgin_sentiment_analyzer/
 ├── notebooks/
 │   ├── 01_data_validation.ipynb
 │   ├── 02_data_preprocessing.ipynb
-│   └── 03_exploratory_data_analysis.ipynb
+│   ├── 03_exploratory_data_analysis.ipynb
+│   ├── 04_feature_engineering.ipynb
+│   └── 05_model_training.ipynb
 │
 ├── models/
+│   ├── best_model.joblib
+│   ├── tfidf_vectorizer.joblib
+│   └── label_encoder.joblib
+│
 ├── outputs/
 ├── src/
 │
@@ -82,6 +88,7 @@ nigerian_pidgin_sentiment_analyzer/
 
 
 # Project Progress
+
 
 ## Phase 1 — Product Discovery
 
@@ -106,7 +113,7 @@ nigerian_pidgin_sentiment_analyzer/
 * Dataset selection
 * Machine Learning approach
 * Evaluation strategy
-* Model architecture planning
+* Model development planning
 
 **Status:** Completed
 
@@ -122,9 +129,9 @@ nigerian_pidgin_sentiment_analyzer/
 **Status:** Completed
 
 
-## Phase 5 — Data Engineering & Exploratory Data Analysis
+# Phase 5 — Data Engineering & Exploratory Data Analysis
 
-### Completed
+## Completed
 
 * Environment setup
 * Dataset acquisition
@@ -145,20 +152,157 @@ nigerian_pidgin_sentiment_analyzer/
 * Sentence length analysis
 * Word frequency analysis
 * Word Cloud generation
-* Documentation
+* Technical documentation
 
-### Next
+**Status:** Completed
 
-* Feature Engineering
-* Machine Learning Baseline Models
+
+# Phase 6 — Feature Engineering & Machine Learning Model Development
+
+## Feature Engineering Completed
+
+The processed Nigerian Pidgin dataset was transformed into machine-readable numerical features.
+
+Implemented:
+
+* Label Encoding
+
+Sentiment classes were converted into numerical representations:
+
+```
+Negative → 0
+Neutral  → 1
+Positive → 2
+```
+
+* Train-Test Split
+
+Dataset was divided into:
+
+* Training data: 80%
+* Testing data: 20%
+
+Stratified splitting was applied to maintain class distribution.
+
+* TF-IDF Vectorization
+
+Text data was converted into numerical feature vectors using:
+
+**Term Frequency-Inverse Document Frequency (TF-IDF)**
+
+Configuration:
+
+* Maximum features: 5,000
+
+
+## Machine Learning Models Implemented
+
+Three machine learning algorithms were trained and evaluated:
+
+### 1. Multinomial Naive Bayes
+
+A probabilistic classifier commonly used for text classification.
+
+Strength:
+
+* Efficient for high-dimensional text data.
+
+Limitation:
+
+* Showed bias towards the majority sentiment class.
+
+
+### 2. Logistic Regression
+
+A linear classification algorithm used as a strong baseline model.
+
+Strength:
+
+* Provided better balance between sentiment classes compared to Naive Bayes.
+
+
+### 3. Linear Support Vector Machine (LinearSVC)
+
+A machine learning algorithm optimized for high-dimensional sparse text features.
+
+Strength:
+
+* Performs well on TF-IDF based NLP classification tasks.
+* Achieved the best overall balance between precision and recall.
+
+
+# Model Evaluation
+
+The models were evaluated using:
+
+* Accuracy
+* Precision
+* Recall
+* F1-score
+* Classification Report
+* Confusion Matrix
+
+
+## Model Comparison Results
+
+| Model | Accuracy | Precision | Recall | F1 Score |
+|---|---:|---:|---:|---:|
+| Multinomial Naive Bayes | 0.6598 | 0.7033 | 0.6598 | 0.5408 |
+| Logistic Regression | 0.6448 | 0.6538 | 0.6448 | 0.6481 |
+| LinearSVC | 0.6555 | 0.6456 | 0.6555 | 0.6505 |
+
+
+# Final Model Selection
+
+After evaluating all three models, **Linear Support Vector Machine (LinearSVC)** was selected as the final sentiment classification model.
+
+Selection reason:
+
+* Achieved the highest F1-score among all evaluated models.
+* Provided the best balance between precision and recall.
+* Performs effectively with TF-IDF based text classification.
+* Better suited for handling sentiment classification with imbalanced classes.
+
+Although Multinomial Naive Bayes achieved slightly higher accuracy, further analysis showed that it was heavily influenced by the majority Negative class and performed poorly on minority sentiment classes.
+
+
+Selected Model:
+
+**LinearSVC**
+
+
+# Exported Model Artifacts
+
+The final trained components were exported using Joblib for future prediction and deployment.
+
+Generated files:
+
+```text
+models/
+│
+├── best_model.joblib
+├── tfidf_vectorizer.joblib
+└── label_encoder.joblib
+```
+
+
+## Artifact Description
+
+| File | Purpose |
+|---|---|
+| best_model.joblib | Trained LinearSVC sentiment classification model |
+| tfidf_vectorizer.joblib | Converts text input into TF-IDF numerical features |
+| label_encoder.joblib | Converts numerical predictions back into sentiment labels |
 
 
 # Documentation
 
 Project documentation is available in the **docs/** folder.
 
+Available documents:
+
 * Dataset Acquisition Report
-* Data Validation Report
+* Dataset Validation Report
 * Data Cleaning Log
 
 
@@ -168,6 +312,7 @@ Project documentation is available in the **docs/** folder.
 
 * Python 3.14
 
+
 ## Libraries
 
 * Pandas
@@ -176,6 +321,8 @@ Project documentation is available in the **docs/** folder.
 * NLTK
 * Matplotlib
 * WordCloud
+* Joblib
+
 
 ## Development Tools
 
@@ -194,7 +341,8 @@ Project documentation is available in the **docs/** folder.
 * Feature Engineering
 * Machine Learning Model Development
 * Model Evaluation
-* Hyperparameter Tuning
+* Model Selection
+* Model Export
 * Model Deployment
 * Web Application Development
 
@@ -209,9 +357,11 @@ Project documentation is available in the **docs/** folder.
 * [x] Data Validation
 * [x] Data Preprocessing
 * [x] Exploratory Data Analysis
-* [ ] Feature Engineering
-* [ ] Machine Learning Baseline Models
-* [ ] Model Evaluation
+* [x] Feature Engineering
+* [x] Machine Learning Baseline Models
+* [x] Model Evaluation
+* [x] Model Selection
+* [x] Model Artifact Export
 * [ ] Hyperparameter Tuning
 * [ ] Model Deployment
 * [ ] API Development
@@ -220,18 +370,34 @@ Project documentation is available in the **docs/** folder.
 
 # Repository Status
 
-**Current Milestone**
+## Current Milestone
 
-**Day 1 Completed**
+**Day 2 Completed — Feature Engineering & Machine Learning Model Development**
 
-The project has successfully completed:
+Completed:
 
 * Data validation
 * Data preprocessing
 * Exploratory Data Analysis
-* Technical documentation
+* Feature engineering
+* TF-IDF vectorization
+* Machine learning model training
+* Model evaluation
+* Model comparison
+* Final model selection
+* Model artifact export
 
-The next milestone is **Feature Engineering and Machine Learning Baseline Models**.
+Next milestone:
+
+**Model Deployment Preparation**
+
+Planned activities:
+
+* Build inference pipeline
+* Create prediction scripts
+* Develop API integration
+* Deploy sentiment analysis application
+
 
 # Author
 
@@ -239,9 +405,11 @@ The next milestone is **Feature Engineering and Machine Learning Baseline Models
 
 Backend Developer | AI/ML Engineer | 3MTT Fellow
 
+
 **GitHub**
 
 https://github.com/Habideen1
+
 
 **LinkedIn**
 
