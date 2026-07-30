@@ -2,19 +2,21 @@
 
 A Machine Learning and Natural Language Processing (NLP) project that automatically classifies Nigerian Pidgin text into **Positive**, **Negative**, or **Neutral** sentiments.
 
-This project is being developed as part of the **3 Million Technical Talent (3MTT) AI/ML Capstone Project** and follows an end-to-end Machine Learning workflow—from data acquisition and preprocessing to feature engineering, model training, evaluation, and deployment.
-
+This project is developed as part of the **3 Million Technical Talent (3MTT) AI/ML Capstone Project** and follows an end-to-end Machine Learning workflow — from data acquisition, preprocessing, exploratory data analysis, feature engineering, model training, evaluation, model deployment preparation, and API development.
 
 # Project Objective
 
-Millions of conversations are shared daily on social media in Nigerian Pidgin. However, most existing sentiment analysis systems are trained primarily on Standard English, making them less effective for understanding local expressions, slang, and cultural context.
+Millions of conversations are shared daily on social media platforms in Nigerian Pidgin. However, most existing sentiment analysis systems are trained primarily on Standard English, making them less effective at understanding Nigerian expressions, slang, informal writing patterns, and cultural context.
 
-The goal of this project is to develop an AI-powered sentiment analysis model specifically designed for Nigerian Pidgin that can accurately classify text into **Positive**, **Negative**, or **Neutral** sentiment categories.
+The goal of this project is to develop an AI-powered sentiment analysis system specifically designed for Nigerian Pidgin that can classify text into:
 
+* Positive
+* Negative
+* Neutral
 
 # Problem Statement
 
-Traditional sentiment analysis models struggle with Nigerian Pidgin because of:
+Traditional sentiment analysis systems struggle with Nigerian Pidgin because of:
 
 * Local vocabulary
 * Slang and abbreviations
@@ -23,8 +25,7 @@ Traditional sentiment analysis models struggle with Nigerian Pidgin because of:
 * Cultural context
 * Social media writing styles
 
-This project addresses these challenges by training a sentiment classifier on a manually annotated Nigerian Pidgin dataset.
-
+This project addresses these challenges by training a machine learning classifier on an annotated Nigerian Pidgin sentiment dataset.
 
 # Dataset
 
@@ -46,7 +47,6 @@ This project addresses these challenges by training a sentiment classifier on a 
 * Negative
 * Neutral
 
-
 # Project Structure
 
 ```text
@@ -64,7 +64,8 @@ nigerian_pidgin_sentiment_analyzer/
 ├── docs/
 │   ├── dataset_acquisition_report.md
 │   ├── data_validation_report.md
-│   └── data_cleaning_log.md
+│   ├── data_cleaning_log.md
+│   └── api_documentation.md
 │
 ├── notebooks/
 │   ├── 01_data_validation.ipynb
@@ -78,6 +79,23 @@ nigerian_pidgin_sentiment_analyzer/
 │   ├── tfidf_vectorizer.joblib
 │   └── label_encoder.joblib
 │
+├── backend/
+│   │
+│   ├── config/
+│   │   ├── settings.py
+│   │   └── urls.py
+│   │
+│   ├── prediction/
+│   │   ├── views.py
+│   │   ├── serializers.py
+│   │   ├── urls.py
+│   │   ├── preprocessing.py
+│   │   ├── model_loader.py
+│   │   └── inference.py
+│   │
+│   ├── manage.py
+│   └── requirements.txt
+│
 ├── outputs/
 ├── src/
 │
@@ -86,11 +104,11 @@ nigerian_pidgin_sentiment_analyzer/
 └── README.md
 ```
 
-
 # Project Progress
 
-
 ## Phase 1 — Product Discovery
+
+Completed:
 
 * Project vision
 * Problem identification
@@ -98,8 +116,9 @@ nigerian_pidgin_sentiment_analyzer/
 
 **Status:** Completed
 
-
 ## Phase 2 — Requirements Analysis
+
+Completed:
 
 * Functional requirements
 * Non-functional requirements
@@ -107,18 +126,20 @@ nigerian_pidgin_sentiment_analyzer/
 
 **Status:** Completed
 
-
 ## Phase 3 — Data Strategy & Machine Learning Design
 
+Completed:
+
 * Dataset selection
-* Machine Learning approach
+* Machine learning approach
 * Evaluation strategy
 * Model development planning
 
 **Status:** Completed
 
-
 ## Phase 4 — Project Setup
+
+Completed:
 
 * Repository creation
 * Virtual environment
@@ -128,12 +149,10 @@ nigerian_pidgin_sentiment_analyzer/
 
 **Status:** Completed
 
-
 # Phase 5 — Data Engineering & Exploratory Data Analysis
 
-## Completed
+Completed:
 
-* Environment setup
 * Dataset acquisition
 * Dataset loading
 * Dataset validation
@@ -147,7 +166,6 @@ nigerian_pidgin_sentiment_analyzer/
 * Tokenization
 * Stopword removal
 * Processed dataset generation
-* Exploratory Data Analysis
 * Class distribution visualization
 * Sentence length analysis
 * Word frequency analysis
@@ -156,18 +174,17 @@ nigerian_pidgin_sentiment_analyzer/
 
 **Status:** Completed
 
-
 # Phase 6 — Feature Engineering & Machine Learning Model Development
 
-## Feature Engineering Completed
+## Feature Engineering
 
-The processed Nigerian Pidgin dataset was transformed into machine-readable numerical features.
+The processed Nigerian Pidgin dataset was transformed into numerical features suitable for machine learning.
 
 Implemented:
 
-* Label Encoding
+### Label Encoding
 
-Sentiment classes were converted into numerical representations:
+Sentiment labels were converted into numerical values:
 
 ```
 Negative → 0
@@ -175,16 +192,16 @@ Neutral  → 1
 Positive → 2
 ```
 
-* Train-Test Split
+### Train-Test Split
 
-Dataset was divided into:
+Dataset split:
 
 * Training data: 80%
 * Testing data: 20%
 
-Stratified splitting was applied to maintain class distribution.
+A stratified split was applied to maintain class distribution.
 
-* TF-IDF Vectorization
+### TF-IDF Vectorization
 
 Text data was converted into numerical feature vectors using:
 
@@ -194,12 +211,11 @@ Configuration:
 
 * Maximum features: 5,000
 
+# Machine Learning Models Implemented
 
-## Machine Learning Models Implemented
+Three classification algorithms were trained and evaluated.
 
-Three machine learning algorithms were trained and evaluated:
-
-### 1. Multinomial Naive Bayes
+## 1. Multinomial Naive Bayes
 
 A probabilistic classifier commonly used for text classification.
 
@@ -209,31 +225,28 @@ Strength:
 
 Limitation:
 
-* Showed bias towards the majority sentiment class.
+* Biased towards majority sentiment class.
 
+## 2. Logistic Regression
 
-### 2. Logistic Regression
-
-A linear classification algorithm used as a strong baseline model.
-
-Strength:
-
-* Provided better balance between sentiment classes compared to Naive Bayes.
-
-
-### 3. Linear Support Vector Machine (LinearSVC)
-
-A machine learning algorithm optimized for high-dimensional sparse text features.
+A linear classification algorithm used as a baseline model.
 
 Strength:
 
-* Performs well on TF-IDF based NLP classification tasks.
-* Achieved the best overall balance between precision and recall.
+* Better balance between sentiment classes compared to Naive Bayes.
 
+## 3. Linear Support Vector Machine (LinearSVC)
+
+A linear classifier optimized for sparse text features.
+
+Strength:
+
+* Performs effectively with TF-IDF based NLP classification.
+* Achieved the highest F1-score among tested models.
 
 # Model Evaluation
 
-The models were evaluated using:
+Evaluation metrics:
 
 * Accuracy
 * Precision
@@ -242,69 +255,164 @@ The models were evaluated using:
 * Classification Report
 * Confusion Matrix
 
-
 ## Model Comparison Results
 
-| Model | Accuracy | Precision | Recall | F1 Score |
-|---|---:|---:|---:|---:|
-| Multinomial Naive Bayes | 0.6598 | 0.7033 | 0.6598 | 0.5408 |
-| Logistic Regression | 0.6448 | 0.6538 | 0.6448 | 0.6481 |
-| LinearSVC | 0.6555 | 0.6456 | 0.6555 | 0.6505 |
-
+| Model                   | Accuracy | Precision | Recall | F1 Score |
+| ----------------------- | -------: | --------: | -----: | -------: |
+| Multinomial Naive Bayes |   0.6598 |    0.7033 | 0.6598 |   0.5408 |
+| Logistic Regression     |   0.6448 |    0.6538 | 0.6448 |   0.6481 |
+| LinearSVC               |   0.6555 |    0.6456 | 0.6555 |   0.6505 |
 
 # Final Model Selection
 
-After evaluating all three models, **Linear Support Vector Machine (LinearSVC)** was selected as the final sentiment classification model.
+The final selected model is:
 
-Selection reason:
+## Linear Support Vector Machine (LinearSVC)
 
-* Achieved the highest F1-score among all evaluated models.
-* Provided the best balance between precision and recall.
-* Performs effectively with TF-IDF based text classification.
-* Better suited for handling sentiment classification with imbalanced classes.
+Reason for selection:
 
-Although Multinomial Naive Bayes achieved slightly higher accuracy, further analysis showed that it was heavily influenced by the majority Negative class and performed poorly on minority sentiment classes.
+* Highest F1-score among evaluated models.
+* Better balance between precision and recall.
+* Suitable for TF-IDF based sentiment classification.
+* Better generalization compared with Naive Bayes on minority classes.
 
-
-Selected Model:
-
-**LinearSVC**
-
+Although Naive Bayes achieved slightly higher accuracy, it was heavily influenced by the majority Negative class.
 
 # Exported Model Artifacts
 
-The final trained components were exported using Joblib for future prediction and deployment.
+The final model components were exported using Joblib.
 
 Generated files:
 
 ```text
 models/
-│
+
 ├── best_model.joblib
 ├── tfidf_vectorizer.joblib
 └── label_encoder.joblib
 ```
 
+| File                    | Purpose                                         |
+| ----------------------- | ----------------------------------------------- |
+| best_model.joblib       | Trained LinearSVC sentiment classifier          |
+| tfidf_vectorizer.joblib | Converts text into numerical TF-IDF features    |
+| label_encoder.joblib    | Converts predictions back into sentiment labels |
 
-## Artifact Description
+# Phase 7 — Backend API Development (Django REST Framework)
 
-| File | Purpose |
-|---|---|
-| best_model.joblib | Trained LinearSVC sentiment classification model |
-| tfidf_vectorizer.joblib | Converts text input into TF-IDF numerical features |
-| label_encoder.joblib | Converts numerical predictions back into sentiment labels |
+The trained machine learning model was integrated into a Django REST API to allow external applications to consume sentiment predictions.
 
+## Backend Implementation Completed
+
+Implemented:
+
+* Django project setup
+* Django REST Framework configuration
+* Prediction application
+* Model loading system
+* Text preprocessing pipeline
+* Inference pipeline
+* REST API endpoint
+* Input validation
+* Error handling
+* API testing
+
+# API Architecture
+
+Prediction flow:
+
+```
+User Input
+
+↓
+
+Django REST API
+
+↓
+
+Serializer Validation
+
+↓
+
+Text Preprocessing
+
+↓
+
+TF-IDF Transformation
+
+↓
+
+LinearSVC Model Prediction
+
+↓
+
+Label Decoding
+
+↓
+
+JSON Response
+```
+
+# Prediction API
+
+## Endpoint
+
+```
+POST /api/v1/predict/
+```
+
+## Request Example
+
+```json
+{
+    "text": "dis movie sweet die"
+}
+```
+
+## Successful Response
+
+```json
+{
+    "success": true,
+    "message": "Prediction completed successfully.",
+    "data": {
+        "text": "dis movie sweet die",
+        "prediction": "positive"
+    }
+}
+```
+
+## Error Handling
+
+The API handles:
+
+* Missing fields
+* Invalid input types
+* Empty requests
+* Internal prediction errors
+
+Example:
+
+```json
+{
+    "success": false,
+    "message": "Validation failed.",
+    "errors": {
+        "text": [
+            "Text input must be a string."
+        ]
+    }
+}
+```
 
 # Documentation
 
-Project documentation is available in the **docs/** folder.
-
-Available documents:
+Available documentation:
 
 * Dataset Acquisition Report
-* Dataset Validation Report
+* Data Validation Report
 * Data Cleaning Log
-
+* API Documentation
 
 # Technologies
 
@@ -312,8 +420,7 @@ Available documents:
 
 * Python 3.14
 
-
-## Libraries
+## Machine Learning & NLP
 
 * Pandas
 * NumPy
@@ -323,14 +430,20 @@ Available documents:
 * WordCloud
 * Joblib
 
+## Backend Development
+
+* Django
+* Django REST Framework
+* REST API
+* CORS Headers
 
 ## Development Tools
 
 * Visual Studio Code
 * Jupyter Notebook
+* Postman
 * Git
 * GitHub
-
 
 # Machine Learning Workflow
 
@@ -339,13 +452,13 @@ Available documents:
 * Data Preprocessing
 * Exploratory Data Analysis
 * Feature Engineering
-* Machine Learning Model Development
+* Model Training
 * Model Evaluation
 * Model Selection
 * Model Export
+* Backend API Development
 * Model Deployment
 * Web Application Development
-
 
 # Project Roadmap
 
@@ -358,21 +471,22 @@ Available documents:
 * [x] Data Preprocessing
 * [x] Exploratory Data Analysis
 * [x] Feature Engineering
-* [x] Machine Learning Baseline Models
+* [x] Machine Learning Model Development
 * [x] Model Evaluation
 * [x] Model Selection
 * [x] Model Artifact Export
+* [x] Django REST API Development
+* [x] API Validation & Error Handling
 * [ ] Hyperparameter Tuning
 * [ ] Model Deployment
-* [ ] API Development
 * [ ] Streamlit Web Application
-
+* [ ] Frontend Application
 
 # Repository Status
 
 ## Current Milestone
 
-**Day 2 Completed — Feature Engineering & Machine Learning Model Development**
+# Day 3 Completed — Django REST API Integration
 
 Completed:
 
@@ -380,24 +494,35 @@ Completed:
 * Data preprocessing
 * Exploratory Data Analysis
 * Feature engineering
-* TF-IDF vectorization
 * Machine learning model training
 * Model evaluation
-* Model comparison
 * Final model selection
 * Model artifact export
+* Django backend integration
+* REST API implementation
+* Prediction endpoint
+* Input validation
+* Error handling
+
+Current system contains:
+
+✅ Trained ML Model
+✅ Exported Model Artifacts
+✅ Django REST API
+✅ Prediction Endpoint
+✅ Production-style Error Handling
 
 Next milestone:
 
-**Model Deployment Preparation**
+# Deployment & User Interface Development
 
-Planned activities:
+Planned:
 
-* Build inference pipeline
-* Create prediction scripts
-* Develop API integration
-* Deploy sentiment analysis application
-
+* Deploy backend API
+* Build Streamlit interface
+* Connect frontend to API
+* Add confidence visualization
+* Prepare final project demonstration
 
 # Author
 
@@ -405,16 +530,13 @@ Planned activities:
 
 Backend Developer | AI/ML Engineer | 3MTT Fellow
 
-
-**GitHub**
+GitHub:
 
 https://github.com/Habideen1
 
-
-**LinkedIn**
+LinkedIn:
 
 https://www.linkedin.com/in/abideen-adenekan/
-
 
 # License
 
