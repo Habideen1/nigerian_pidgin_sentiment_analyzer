@@ -2,7 +2,9 @@
 
 A Machine Learning and Natural Language Processing (NLP) project that automatically classifies Nigerian Pidgin text into **Positive**, **Negative**, or **Neutral** sentiments.
 
-This project is developed as part of the **3 Million Technical Talent (3MTT) AI/ML Capstone Project** and follows an end-to-end Machine Learning workflow — from data acquisition, preprocessing, exploratory data analysis, feature engineering, model training, evaluation, model deployment preparation, and API development.
+This project is developed as part of the **3 Million Technical Talent (3MTT) AI/ML Capstone Project** and follows an end-to-end Machine Learning workflow — from data acquisition, preprocessing, exploratory data analysis, feature engineering, model training, evaluation, model deployment preparation, API development, and frontend integration.
+
+---
 
 # Project Objective
 
@@ -13,6 +15,8 @@ The goal of this project is to develop an AI-powered sentiment analysis system s
 * Positive
 * Negative
 * Neutral
+
+---
 
 # Problem Statement
 
@@ -26,6 +30,8 @@ Traditional sentiment analysis systems struggle with Nigerian Pidgin because of:
 * Social media writing styles
 
 This project addresses these challenges by training a machine learning classifier on an annotated Nigerian Pidgin sentiment dataset.
+
+---
 
 # Dataset
 
@@ -46,6 +52,8 @@ This project addresses these challenges by training a machine learning classifie
 * Positive
 * Negative
 * Neutral
+
+---
 
 # Project Structure
 
@@ -96,13 +104,34 @@ nigerian_pidgin_sentiment_analyzer/
 │   ├── manage.py
 │   └── requirements.txt
 │
-├── outputs/
-├── src/
+├── frontend/
+│   │
+│   ├── src/
+│   │   ├── api/
+│   │   │   └── axios.js
+│   │   │
+│   │   ├── components/
+│   │   │   ├── PredictionForm.jsx
+│   │   │   ├── PredictionCard.jsx
+│   │   │   ├── Loader.jsx
+│   │   │   └── ErrorMessage.jsx
+│   │   │
+│   │   ├── pages/
+│   │   │   └── Home.jsx
+│   │   │
+│   │   └── styles/
+│   │       └── app.css
+│   │
+│   ├── package.json
+│   └── vite.config.js
 │
+├── outputs/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
 ```
+
+---
 
 # Project Progress
 
@@ -116,6 +145,8 @@ Completed:
 
 **Status:** Completed
 
+---
+
 ## Phase 2 — Requirements Analysis
 
 Completed:
@@ -125,6 +156,8 @@ Completed:
 * Success metrics
 
 **Status:** Completed
+
+---
 
 ## Phase 3 — Data Strategy & Machine Learning Design
 
@@ -137,6 +170,8 @@ Completed:
 
 **Status:** Completed
 
+---
+
 ## Phase 4 — Project Setup
 
 Completed:
@@ -148,6 +183,8 @@ Completed:
 * Git initialization
 
 **Status:** Completed
+
+---
 
 # Phase 5 — Data Engineering & Exploratory Data Analysis
 
@@ -174,6 +211,8 @@ Completed:
 
 **Status:** Completed
 
+---
+
 # Phase 6 — Feature Engineering & Machine Learning Model Development
 
 ## Feature Engineering
@@ -183,8 +222,6 @@ The processed Nigerian Pidgin dataset was transformed into numerical features su
 Implemented:
 
 ### Label Encoding
-
-Sentiment labels were converted into numerical values:
 
 ```
 Negative → 0
@@ -211,13 +248,13 @@ Configuration:
 
 * Maximum features: 5,000
 
+---
+
 # Machine Learning Models Implemented
 
-Three classification algorithms were trained and evaluated.
+Three classification algorithms were trained and evaluated:
 
 ## 1. Multinomial Naive Bayes
-
-A probabilistic classifier commonly used for text classification.
 
 Strength:
 
@@ -227,22 +264,25 @@ Limitation:
 
 * Biased towards majority sentiment class.
 
-## 2. Logistic Regression
+---
 
-A linear classification algorithm used as a baseline model.
+## 2. Logistic Regression
 
 Strength:
 
-* Better balance between sentiment classes compared to Naive Bayes.
+* Strong baseline model.
+* Better class balance compared to Naive Bayes.
+
+---
 
 ## 3. Linear Support Vector Machine (LinearSVC)
-
-A linear classifier optimized for sparse text features.
 
 Strength:
 
 * Performs effectively with TF-IDF based NLP classification.
-* Achieved the highest F1-score among tested models.
+* Achieved the highest F1-score among evaluated models.
+
+---
 
 # Model Evaluation
 
@@ -263,24 +303,24 @@ Evaluation metrics:
 | Logistic Regression     |   0.6448 |    0.6538 | 0.6448 |   0.6481 |
 | LinearSVC               |   0.6555 |    0.6456 | 0.6555 |   0.6505 |
 
+---
+
 # Final Model Selection
 
 The final selected model is:
 
 ## Linear Support Vector Machine (LinearSVC)
 
-Reason for selection:
+Reasons:
 
 * Highest F1-score among evaluated models.
 * Better balance between precision and recall.
 * Suitable for TF-IDF based sentiment classification.
-* Better generalization compared with Naive Bayes on minority classes.
+* Better performance on minority sentiment classes compared with Naive Bayes.
 
-Although Naive Bayes achieved slightly higher accuracy, it was heavily influenced by the majority Negative class.
+---
 
 # Exported Model Artifacts
-
-The final model components were exported using Joblib.
 
 Generated files:
 
@@ -298,11 +338,11 @@ models/
 | tfidf_vectorizer.joblib | Converts text into numerical TF-IDF features    |
 | label_encoder.joblib    | Converts predictions back into sentiment labels |
 
+---
+
 # Phase 7 — Backend API Development (Django REST Framework)
 
 The trained machine learning model was integrated into a Django REST API to allow external applications to consume sentiment predictions.
-
-## Backend Implementation Completed
 
 Implemented:
 
@@ -316,6 +356,8 @@ Implemented:
 * Input validation
 * Error handling
 * API testing
+
+---
 
 # API Architecture
 
@@ -342,7 +384,7 @@ TF-IDF Transformation
 
 ↓
 
-LinearSVC Model Prediction
+LinearSVC Prediction
 
 ↓
 
@@ -353,6 +395,8 @@ Label Decoding
 JSON Response
 ```
 
+---
+
 # Prediction API
 
 ## Endpoint
@@ -361,7 +405,7 @@ JSON Response
 POST /api/v1/predict/
 ```
 
-## Request Example
+## Request
 
 ```json
 {
@@ -369,7 +413,7 @@ POST /api/v1/predict/
 }
 ```
 
-## Successful Response
+## Response
 
 ```json
 {
@@ -382,43 +426,95 @@ POST /api/v1/predict/
 }
 ```
 
-## Error Handling
+---
 
-The API handles:
+# Phase 8 — Frontend Application Development (React)
 
-* Missing fields
-* Invalid input types
-* Empty requests
-* Internal prediction errors
+A React frontend application was created to provide users with a simple interface for interacting with the sentiment analysis API.
 
-Example:
+Implemented:
 
-```json
-{
-    "success": false,
-    "message": "Validation failed.",
-    "errors": {
-        "text": [
-            "Text input must be a string."
-        ]
-    }
-}
+* React application setup using Vite
+* Axios API integration
+* Prediction form
+* Prediction result display
+* Loading state
+* Error handling
+* Responsive UI design
+* API communication
+
+---
+
+# Frontend Architecture
+
+```
+User Input
+
+↓
+
+React Prediction Form
+
+↓
+
+Axios Request
+
+↓
+
+Django REST API
+
+↓
+
+Machine Learning Pipeline
+
+↓
+
+Prediction Response
+
+↓
+
+Prediction Card Display
 ```
 
-# Documentation
+---
 
-Available documentation:
+# Frontend Components
 
-* Dataset Acquisition Report
-* Data Validation Report
-* Data Cleaning Log
-* API Documentation
+## PredictionForm.jsx
+
+Handles:
+
+* User text input
+* API requests
+* Loading state management
+
+## PredictionCard.jsx
+
+Handles:
+
+* Sentiment result display
+* User-friendly feedback
+
+## Loader.jsx
+
+Handles:
+
+* Prediction processing state
+
+## ErrorMessage.jsx
+
+Handles:
+
+* Validation errors
+* API failures
+
+---
 
 # Technologies
 
 ## Programming Language
 
-* Python 3.14
+* Python
+* JavaScript
 
 ## Machine Learning & NLP
 
@@ -437,6 +533,13 @@ Available documentation:
 * REST API
 * CORS Headers
 
+## Frontend Development
+
+* React.js
+* Vite
+* Axios
+* CSS
+
 ## Development Tools
 
 * Visual Studio Code
@@ -445,7 +548,9 @@ Available documentation:
 * Git
 * GitHub
 
-# Machine Learning Workflow
+---
+
+# End-to-End AI Application Workflow
 
 * Dataset Acquisition
 * Data Validation
@@ -456,9 +561,13 @@ Available documentation:
 * Model Evaluation
 * Model Selection
 * Model Export
-* Backend API Development
-* Model Deployment
-* Web Application Development
+* Django REST API Development
+* API Testing
+* React Frontend Development
+* User Interface Integration
+* Deployment
+
+---
 
 # Project Roadmap
 
@@ -477,32 +586,33 @@ Available documentation:
 * [x] Model Artifact Export
 * [x] Django REST API Development
 * [x] API Validation & Error Handling
-* [ ] Hyperparameter Tuning
-* [ ] Model Deployment
-* [ ] Streamlit Web Application
-* [ ] Frontend Application
+* [x] React Frontend Development
+* [x] API Integration
+* [x] User Interface Implementation
+* [ ] Deployment
+* [ ] Production Environment Configuration
+* [ ] Final Demo Preparation
+
+---
 
 # Repository Status
 
 ## Current Milestone
 
-# Day 3 Completed — Django REST API Integration
+# Day 4 Completed — Full Stack AI Application Interface
 
 Completed:
 
-* Data validation
-* Data preprocessing
-* Exploratory Data Analysis
-* Feature engineering
-* Machine learning model training
-* Model evaluation
-* Final model selection
+* Machine Learning pipeline
+* Model training and evaluation
 * Model artifact export
-* Django backend integration
-* REST API implementation
+* Django backend API
 * Prediction endpoint
 * Input validation
 * Error handling
+* React frontend
+* API integration
+* User interface development
 
 Current system contains:
 
@@ -510,19 +620,22 @@ Current system contains:
 ✅ Exported Model Artifacts
 ✅ Django REST API
 ✅ Prediction Endpoint
-✅ Production-style Error Handling
+✅ React Frontend Application
+✅ End-to-End Sentiment Prediction Workflow
 
 Next milestone:
 
-# Deployment & User Interface Development
+# Deployment Preparation
 
 Planned:
 
-* Deploy backend API
-* Build Streamlit interface
-* Connect frontend to API
-* Add confidence visualization
-* Prepare final project demonstration
+* Deploy Django API
+* Deploy React frontend
+* Configure production environment variables
+* Connect frontend to production API
+* Prepare final 3MTT demonstration
+
+---
 
 # Author
 
@@ -537,6 +650,8 @@ https://github.com/Habideen1
 LinkedIn:
 
 https://www.linkedin.com/in/abideen-adenekan/
+
+---
 
 # License
 
