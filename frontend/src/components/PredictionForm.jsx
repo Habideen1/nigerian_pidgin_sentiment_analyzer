@@ -100,4 +100,5 @@ function PredictionForm() {
     );
 }
 
+
 export default PredictionForm;
