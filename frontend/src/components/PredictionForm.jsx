@@ -28,12 +28,12 @@ function PredictionForm() {
         try {
             setLoading(true);
 
-        await new Promise(
-            resolve => setTimeout(resolve, 3000)
-             );
+        // await new Promise(
+        //     resolve => setTimeout(resolve, 3000)
+        //      );
 
             const response = await api.post(
-                "/predict/",
+                "api/v1/predict/",
                 {
                     text: text,
                 }
