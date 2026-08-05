@@ -1,225 +1,428 @@
 # Nigerian Pidgin Sentiment Analyzer
 
-An end-to-end **Machine Learning and Natural Language Processing (NLP)** application that automatically classifies Nigerian Pidgin text into **Positive**, **Negative**, or **Neutral** sentiments.
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Django](https://img.shields.io/badge/Django-REST%20Framework-green)
+![React](https://img.shields.io/badge/React-Vite-blue)
+![Machine Learning](https://img.shields.io/badge/Machine%20Learning-NLP-orange)
+![Deployment](https://img.shields.io/badge/Deployment-Render%20%7C%20Vercel-purple)
+![Status](https://img.shields.io/badge/Status-Production%20Ready-success)
 
-This project was developed as part of the **3 Million Technical Talent (3MTT) AI/ML Capstone Project** and demonstrates the complete lifecycle of an AI product—from product discovery and data engineering to machine learning model development, REST API integration, React frontend development, and cloud deployment.
+An end-to-end **Machine Learning and Natural Language Processing (NLP)** application that classifies Nigerian Pidgin text into three sentiment categories:
+
+* 😊 Positive
+* 😐 Neutral
+* 😠 Negative
+
+The project demonstrates the complete lifecycle of an Artificial Intelligence product, including:
+
+* Product discovery
+* Data acquisition and validation
+* NLP preprocessing
+* Exploratory Data Analysis (EDA)
+* Feature engineering
+* Machine Learning model development
+* REST API development
+* React frontend development
+* Cloud deployment
+
+This project was developed as part of the **3 Million Technical Talent (3MTT) AI/ML Capstone Project**.
 
 ---
 
 # Table of Contents
 
-- Project Overview
-- Project Objectives
-- Problem Statement
-- Dataset
-- Project Structure
-- Project Progress
-- Feature Engineering
-- Machine Learning Model Development
-- Model Evaluation
-- Backend API Development
-- Frontend Application
-- Deployment
-- Technologies Used
-- End-to-End Workflow
-- Project Roadmap
-- Repository Status
-- Future Improvements
-- Author
-- License
+* [Project Overview](#project-overview)
+* [Project Objectives](#project-objectives)
+* [Problem Statement](#problem-statement)
+* [Dataset](#dataset)
+* [Project Structure](#project-structure)
+* [Project Development Journey](#project-development-journey)
+* [Phase 1 — Product Discovery](#phase-1--product-discovery)
+* [Phase 2 — Requirements Analysis](#phase-2--requirements-analysis)
+* [Phase 3 — Data Strategy & ML Design](#phase-3--data-strategy--ml-design)
+* [Phase 4 — Project Setup](#phase-4--project-setup)
+* [Phase 5 — Data Engineering & Exploratory Data Analysis](#phase-5--data-engineering--exploratory-data-analysis)
+* [Phase 6 — Feature Engineering & Machine Learning Development](#phase-6--feature-engineering--machine-learning-development)
+* [Model Evaluation](#model-evaluation)
+* [Backend API Development](#backend-api-development)
+* [Frontend Application](#frontend-application)
+* [Deployment](#deployment)
+* [Technologies Used](#technologies-used)
+* [End-to-End Workflow](#end-to-end-workflow)
+* [Project Roadmap](#project-roadmap)
+* [Author](#author)
 
 ---
 
 # Project Overview
 
-Social media conversations in Nigeria are increasingly conducted in **Nigerian Pidgin English**, yet most existing sentiment analysis systems are trained primarily on Standard English. Consequently, they perform poorly when processing Nigerian slang, informal spellings, abbreviations, and culturally specific expressions.
+Social media communication in Nigeria increasingly occurs through informal language systems such as **Nigerian Pidgin English (Naija Pidgin)**.
 
-This project addresses that gap by building a machine learning application capable of understanding Nigerian Pidgin and accurately predicting the sentiment expressed in user-provided text.
+However, most traditional sentiment analysis systems are trained primarily on Standard English datasets. As a result, they struggle with:
 
-The completed application consists of:
+* Nigerian slang
+* Informal spellings
+* Abbreviations
+* Code-mixed expressions
+* Cultural phrases
+* Social media writing patterns
 
-- A Machine Learning model trained on Nigerian Pidgin text
-- A Django REST Framework backend API
-- A React (Vite) frontend
-- Production deployment on Render
-- A complete end-to-end prediction pipeline
+For example:
+
+```
+omo, dis babe fine oo
+```
+
+A conventional English sentiment model may not correctly understand the positive meaning behind this expression.
+
+This project addresses this challenge by building a dedicated sentiment analysis system trained on Nigerian Pidgin data.
+
+The final application provides:
+
+* A trained NLP sentiment classification model
+* A Django REST Framework API
+* A React + Vite user interface
+* Production cloud deployment
+* Real-time sentiment prediction
 
 ---
 
 # Project Objectives
 
-The objectives of this project are to:
+The major objectives of this project are:
 
-- Build an NLP pipeline tailored to Nigerian Pidgin.
-- Perform exploratory data analysis on the NaijaSenti dataset.
-- Train and compare multiple Machine Learning algorithms.
-- Select the best-performing model using evaluation metrics.
-- Deploy the trained model behind a RESTful API.
-- Develop a modern React interface for user interaction.
-- Deploy the solution to the cloud for public access.
+* Build an NLP pipeline specifically for Nigerian Pidgin text.
+* Explore and analyze the NaijaSenti dataset.
+* Clean and preprocess informal Nigerian language data.
+* Convert text data into machine-readable numerical features.
+* Train multiple Machine Learning classification models.
+* Evaluate models using appropriate performance metrics.
+* Select the best-performing model.
+* Deploy the trained model through a REST API.
+* Build a user-friendly frontend interface.
+* Deploy the complete AI application online.
 
 ---
 
 # Problem Statement
 
-Traditional sentiment analysis systems struggle with Nigerian Pidgin because of:
+Existing sentiment analysis solutions often perform poorly on Nigerian Pidgin because they are not designed to understand local expressions.
 
-- Local vocabulary
-- Slang expressions
-- Informal spellings
-- Abbreviations
-- Code-mixed language
-- Cultural expressions
-- Social-media writing styles
+Challenges include:
 
-These limitations reduce prediction accuracy when using conventional English sentiment analysis models.
+## Local Vocabulary
 
-This project solves this challenge by training a dedicated Machine Learning classifier using annotated Nigerian Pidgin data.
+Examples:
+
+```
+wahala
+dey
+abi
+omo
+sabi
+```
+
+---
+
+## Informal Spellings
+
+Examples:
+
+```
+dis  → this
+dat  → that
+dey  → be/is
+```
+
+---
+
+## Cultural Expressions
+
+Examples:
+
+```
+e sweet well well
+```
+
+Meaning:
+
+```
+It is very good / enjoyable
+```
+
+---
+
+## Social Media Writing Style
+
+Nigerian online conversations often contain:
+
+* Shortened words
+* Emojis
+* Repeated letters
+* Informal grammar
+
+This project solves the problem by training a dedicated Machine Learning classifier using annotated Nigerian Pidgin sentiment data.
 
 ---
 
 # Dataset
 
-**Dataset Name**
+## Dataset Name
 
-NaijaSenti
+**NaijaSenti**
 
-**Language**
+NaijaSenti is a Nigerian sentiment analysis dataset containing annotated social media text across multiple Nigerian languages.
 
+This project focuses specifically on:
+
+```
 Nigerian Pidgin (PCM)
+```
 
-**Files Used**
+---
 
-- train.tsv
-- dev.tsv
-- test.tsv
+## Dataset Files Used
 
-**Target Classes**
+The following files were used:
 
-- Positive
-- Negative
-- Neutral
+```
+dataset/
+
+└── raw/
+
+    ├── train.tsv
+    ├── dev.tsv
+    └── test.tsv
+```
+
+---
+
+## Target Classes
+
+The model predicts three sentiment categories:
+
+| Sentiment | Description                                  |
+| --------- | -------------------------------------------- |
+| Positive  | Expresses satisfaction, happiness, approval  |
+| Negative  | Expresses dissatisfaction, anger, criticism  |
+| Neutral   | Contains factual or non-emotional statements |
 
 ---
 
 # Project Structure
 
+The repository follows a modular architecture separating:
+
+* Data
+* Machine Learning pipeline
+* Backend API
+* Frontend application
+* Documentation
+
 ```text
 nigerian_pidgin_sentiment_analyzer/
 
-├── backend/
-│   ├── config/
-│   ├── prediction/
-│   ├── Procfile
-│   ├── manage.py
-│   ├── requirements.txt
-│   └── .env
-│
-├── frontend/
-│   ├── src/
-│   │   ├── api/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   └── styles/
-│   ├── package.json
-│   └── vite.config.js
 │
 ├── dataset/
+│
 │   ├── raw/
+│   │   ├── train.tsv
+│   │   ├── dev.tsv
+│   │   └── test.tsv
+│   │
 │   └── processed/
+│       └── train_processed.csv
 │
 ├── docs/
+│   ├── dataset_acquisition_report.md
+│   ├── data_validation_report.md
+│   ├── data_cleaning_log.md
+│   └── api_documentation.md
+│
+├── notebooks/
+│   ├── 01_data_validation.ipynb
+│   ├── 02_data_preprocessing.ipynb
+│   ├── 03_exploratory_data_analysis.ipynb
+│   ├── 04_feature_engineering.ipynb
+│   └── 05_model_training.ipynb
 │
 ├── models/
 │   ├── best_model.joblib
 │   ├── tfidf_vectorizer.joblib
 │   └── label_encoder.joblib
 │
-├── notebooks/
+├── backend/
+│   ├── config/
+│   ├── prediction/
+│   ├── manage.py
+│   ├── Procfile
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   ├── package.json
+│   └── vite.config.js
 │
 ├── outputs/
 │
-├── requirements.txt
 ├── README.md
 └── .gitignore
 ```
 
 ---
 
-# Project Progress
+# Project Development Journey
 
-## Phase 1 — Product Discovery
+The project was developed through multiple structured phases:
 
-Completed:
+```
+Product Discovery
 
-- Project vision
-- Problem identification
-- User needs analysis
-- Scope definition
-- Success metrics
+↓
 
-**Status:** ✅ Completed
+Requirements Analysis
+
+↓
+
+Data Strategy & ML Design
+
+↓
+
+Project Setup
+
+↓
+
+Data Engineering
+
+↓
+
+Exploratory Data Analysis
+
+↓
+
+Feature Engineering
+
+↓
+
+Model Development
+
+↓
+
+Backend API Development
+
+↓
+
+Frontend Development
+
+↓
+
+Cloud Deployment
+
+↓
+
+Production AI Application
+```
 
 ---
 
-## Phase 2 — Requirements Analysis
+# Phase 1 — Product Discovery
 
-Completed:
+## Completed Activities
 
-- Functional requirements
-- Non-functional requirements
-- Technical requirements
-- Machine Learning requirements
-- Deployment requirements
+* Defined the project vision.
+* Identified the sentiment analysis problem.
+* Studied Nigerian Pidgin language challenges.
+* Defined target users.
+* Established success criteria.
 
-**Status:** ✅ Completed
+## Status
 
----
-
-## Phase 3 — Data Strategy & Machine Learning Design
-
-Completed:
-
-- Dataset selection
-- Data acquisition strategy
-- Model selection strategy
-- Evaluation methodology
-- Development roadmap
-
-**Status:** ✅ Completed
+✅ Completed
 
 ---
 
-## Phase 4 — Project Setup
+# Phase 2 — Requirements Analysis
 
-Completed:
+## Completed Activities
 
-- GitHub repository setup
-- Project structure creation
-- Virtual environment configuration
-- Jupyter Notebook setup
-- Django backend initialization
-- React frontend initialization
-- Git version control
+Defined:
 
-**Status:** ✅ Completed
+### Functional Requirements
+
+* Accept Nigerian Pidgin text input.
+* Predict sentiment category.
+* Return prediction results.
+* Provide user-friendly feedback.
+
+### Non-Functional Requirements
+
+* Fast response time.
+* Reliable API communication.
+* Scalable architecture.
+* Secure deployment configuration.
+
+### Technical Requirements
+
+* NLP pipeline.
+* Machine Learning model.
+* REST API.
+* Frontend interface.
+* Cloud deployment.
+
+## Status
+
+✅ Completed
+
+---
+
+# Phase 3 — Data Strategy & ML Design
+
+## Completed Activities
+
+* Selected NaijaSenti dataset.
+* Defined preprocessing strategy.
+* Selected candidate ML algorithms.
+* Defined evaluation metrics.
+* Designed deployment architecture.
+
+## Status
+
+✅ Completed
+
+---
+
+# Phase 4 — Project Setup
+
+## Completed Activities
+
+* Created GitHub repository.
+* Designed project folder structure.
+* Configured Python environment.
+* Setup Jupyter Notebook workflow.
+* Initialized Django backend.
+* Initialized React frontend.
+* Configured Git version control.
+
+## Status
+
+✅ Completed
 
 ---
 
 # Phase 5 — Data Engineering & Exploratory Data Analysis
 
-The raw NaijaSenti dataset was explored, validated, cleaned, and transformed into a machine-learning-ready dataset.
+The raw NaijaSenti dataset was prepared for Machine Learning through validation, cleaning, preprocessing, and analysis.
 
 ## Dataset Validation
 
 Completed:
 
-- Dataset inspection
-- Shape verification
-- Missing value detection
-- Duplicate detection
-- Data type validation
-- Label validation
+* Dataset loading
+* Shape verification
+* Data type inspection
+* Missing value detection
+* Duplicate analysis
+* Sentiment label verification
 
 ---
 
@@ -227,159 +430,269 @@ Completed:
 
 Completed:
 
-- Duplicate removal
-- Missing value handling
-- Text normalization
-- Lowercase conversion
-- Whitespace cleanup
+* Duplicate removal
+* Missing value handling
+* Text normalization
+* Lowercase conversion
+* Whitespace cleanup
+* Noise reduction
 
 ---
 
 ## Text Preprocessing
 
-Completed:
+Applied NLP preprocessing techniques:
 
-- Tokenization
-- Stopword removal
-- Text normalization
-- Noise removal
-- Processed dataset generation
+* Tokenization
+* Stopword handling
+* Text normalization
+* Noise removal
+* Dataset transformation
 
----
+Output:
 
-## Exploratory Data Analysis (EDA)
-
-Performed analyses including:
-
-- Class distribution
-- Sentence length distribution
-- Word frequency analysis
-- Most common words
-- WordCloud visualization
-- Dataset statistics
-
-Technical documentation was produced throughout this phase.
-
-**Status:** ✅ Completed
+```text
+Processed Machine Learning Dataset
+```
 
 ---
 
-# Phase 6 — Feature Engineering & Machine Learning Model Development
+## Exploratory Data Analysis
 
-This phase focused on transforming processed Nigerian Pidgin text into numerical representations suitable for Machine Learning models and evaluating multiple classification algorithms to identify the best-performing model.
+Performed analysis including:
+
+* Sentiment class distribution
+* Text length analysis
+* Word frequency analysis
+* Common Nigerian Pidgin words
+* WordCloud visualization
+* Dataset statistics
+
+Documentation produced:
+
+```
+docs/
+
+├── data_validation_report.md
+├── data_cleaning_log.md
+```
+
+## Status
+
+✅ Completed
+
+
+# Phase 6 — Feature Engineering & Machine Learning Development
+
+After completing data preparation and exploratory analysis, the next phase focused on transforming Nigerian Pidgin text into numerical representations suitable for Machine Learning algorithms.
+
+Machine Learning models cannot directly understand raw text. Therefore, Natural Language Processing (NLP) techniques were applied to convert textual information into meaningful numerical features.
 
 ---
 
-## Feature Engineering
+# Feature Engineering
 
-Machine Learning algorithms require numerical input rather than raw text. Therefore, feature engineering was performed using Natural Language Processing (NLP) techniques.
+## Label Encoding
 
-### Label Encoding
-
-Sentiment labels were encoded into numerical values.
+The sentiment labels were converted from text categories into numerical values.
 
 | Sentiment | Encoded Value |
-|-----------|--------------:|
-| Negative | 0 |
-| Neutral | 1 |
-| Positive | 2 |
+| --------- | ------------: |
+| Negative  |             0 |
+| Neutral   |             1 |
+| Positive  |             2 |
+
+This transformation allowed Machine Learning algorithms to process the target variable.
 
 ---
 
-### Train-Test Split
+# Train-Test Split
 
 The processed dataset was divided into training and testing subsets.
 
 Configuration:
 
-- Training Dataset: **80%**
-- Testing Dataset: **20%**
+| Dataset       | Percentage |
+| ------------- | ---------: |
+| Training Data |        80% |
+| Testing Data  |        20% |
 
-A **stratified split** was used to preserve the distribution of sentiment classes across both datasets.
+A **stratified split** was applied to ensure that the distribution of sentiment classes remained consistent across training and testing datasets.
 
 ---
 
-### TF-IDF Vectorization
+# TF-IDF Feature Extraction
 
-The cleaned text was converted into numerical feature vectors using **Term Frequency–Inverse Document Frequency (TF-IDF)**.
+The cleaned Nigerian Pidgin text was converted into numerical vectors using:
+
+## Term Frequency–Inverse Document Frequency (TF-IDF)
+
+TF-IDF measures the importance of words within a document relative to the entire dataset.
 
 Configuration:
 
-- Maximum Features: **5,000**
-- Analyzer: Word
-- Stop Words: Removed during preprocessing
+```text
+Maximum Features: 5000
+Analyzer: Word
+Feature Type: Sparse Matrix
+```
 
-TF-IDF enables Machine Learning algorithms to determine the relative importance of words within the Nigerian Pidgin corpus.
+Example:
 
----
+Input:
 
-# Machine Learning Models
+```text
+omo dis babe fine oo
+```
 
-Three supervised Machine Learning models were implemented and evaluated.
+After TF-IDF transformation:
 
----
+```text
+[0.024, 0.315, 0.087, ...]
+```
 
-## 1. Multinomial Naive Bayes
-
-A probabilistic classifier widely used for text classification.
-
-### Advantages
-
-- Fast training
-- Low computational cost
-- Good baseline classifier
-
-### Limitation
-
-- Strong bias toward majority sentiment classes.
+The numerical representation was then passed into Machine Learning classifiers.
 
 ---
 
-## 2. Logistic Regression
+# Machine Learning Model Development
 
-A linear classification algorithm that performs well on sparse text features.
-
-### Advantages
-
-- Better class balance
-- Stable performance
-- Good interpretability
+Three supervised learning algorithms were implemented and evaluated.
 
 ---
 
-## 3. Linear Support Vector Machine (LinearSVC)
+# Model 1 — Multinomial Naive Bayes
 
-A high-performance classifier optimized for sparse feature spaces such as TF-IDF vectors.
+Multinomial Naive Bayes is a probabilistic classifier commonly used for text classification problems.
 
-### Advantages
+## Advantages
 
-- Excellent generalization
-- Robust against overfitting
-- Highest F1-score among tested models
-- Best balance between precision and recall
+* Fast training speed.
+* Low computational requirements.
+* Effective baseline for NLP classification tasks.
+
+## Limitation
+
+* Assumes feature independence.
+* May struggle with complex language relationships.
+* Can be biased toward majority classes.
+
+---
+
+# Model 2 — Logistic Regression
+
+Logistic Regression is a linear classification algorithm that performs well with high-dimensional sparse datasets such as TF-IDF features.
+
+## Advantages
+
+* Good interpretability.
+* Strong baseline classifier.
+* Stable performance.
+* Handles sparse text features effectively.
+
+---
+
+# Model 3 — Linear Support Vector Machine (LinearSVC)
+
+LinearSVC is a Support Vector Machine implementation optimized for classification tasks involving large sparse feature spaces.
+
+It is commonly used in:
+
+* Text classification.
+* Spam detection.
+* Sentiment analysis.
+* Document categorization.
+
+## Advantages
+
+* Strong generalization ability.
+* Effective with TF-IDF features.
+* Good precision-recall balance.
+* Resistant to overfitting.
+
+---
+
+# Model Training Pipeline
+
+The complete training workflow:
+
+```text
+Processed Dataset
+
+↓
+
+Text Features (TF-IDF)
+
+↓
+
+Training Dataset
+
+↓
+
+Machine Learning Algorithms
+
+↓
+
+Model Evaluation
+
+↓
+
+Best Model Selection
+
+↓
+
+Model Export
+```
 
 ---
 
 # Model Evaluation
 
-The trained models were evaluated using:
+The trained models were evaluated using standard classification metrics.
 
-- Accuracy
-- Precision
-- Recall
-- F1-score
-- Classification Report
-- Confusion Matrix
+Evaluation metrics included:
+
+## Accuracy
+
+Measures the percentage of correct predictions.
+
+Formula:
+
+```
+Correct Predictions / Total Predictions
+```
 
 ---
 
-## Model Comparison
+## Precision
 
-| Model | Accuracy | Precision | Recall | F1 Score |
-|-------|---------:|----------:|-------:|---------:|
-| Multinomial Naive Bayes | 0.6598 | 0.7033 | 0.6598 | 0.5408 |
-| Logistic Regression | 0.6448 | 0.6538 | 0.6448 | 0.6481 |
-| LinearSVC | 0.6555 | 0.6456 | 0.6555 | 0.6505 |
+Measures how many predicted positive cases were actually correct.
+
+---
+
+## Recall
+
+Measures how many actual cases were successfully identified.
+
+---
+
+## F1 Score
+
+The harmonic mean between precision and recall.
+
+F1-score was considered an important metric because sentiment datasets often contain class imbalance.
+
+---
+
+# Model Comparison
+
+The evaluated models produced the following results:
+
+| Model                   | Accuracy | Precision | Recall | F1 Score |
+| ----------------------- | -------: | --------: | -----: | -------: |
+| Multinomial Naive Bayes |   0.6598 |    0.7033 | 0.6598 |   0.5408 |
+| Logistic Regression     |   0.6448 |    0.6538 | 0.6448 |   0.6481 |
+| LinearSVC               |   0.6555 |    0.6456 | 0.6555 |   0.6505 |
 
 ---
 
@@ -387,22 +700,28 @@ The trained models were evaluated using:
 
 ## Selected Model
 
-**Linear Support Vector Machine (LinearSVC)**
+```text
+Linear Support Vector Machine (LinearSVC)
+```
 
-### Reasons
+---
 
-- Highest overall F1-score
-- Better precision-recall balance
-- Excellent performance on sparse TF-IDF features
-- Better handling of minority sentiment classes
+## Selection Reason
 
-Although Naive Bayes achieved a slightly higher accuracy, LinearSVC produced more balanced predictions across all sentiment classes.
+Although Multinomial Naive Bayes achieved slightly higher accuracy, LinearSVC was selected because it provided:
+
+* Highest F1-score.
+* Better balance between precision and recall.
+* Better classification consistency across sentiment classes.
+* Strong performance with TF-IDF features.
+
+The final model provides a better practical solution for real-world Nigerian Pidgin sentiment prediction.
 
 ---
 
 # Model Artifacts
 
-The trained Machine Learning pipeline was exported using **Joblib**.
+The trained pipeline was exported using **Joblib**.
 
 Generated files:
 
@@ -414,40 +733,55 @@ models/
 └── label_encoder.joblib
 ```
 
-| File | Description |
-|------|-------------|
-| best_model.joblib | Trained LinearSVC classifier |
-| tfidf_vectorizer.joblib | Converts input text into TF-IDF vectors |
-| label_encoder.joblib | Converts encoded predictions back to sentiment labels |
+---
+
+## Artifact Description
+
+| File                    | Purpose                                                   |
+| ----------------------- | --------------------------------------------------------- |
+| best_model.joblib       | Stores trained LinearSVC classifier                       |
+| tfidf_vectorizer.joblib | Converts text input into numerical features               |
+| label_encoder.joblib    | Converts numerical predictions back into sentiment labels |
 
 ---
 
-# Phase 7 — Backend API Development (Django REST Framework)
+# Phase 7 — Backend API Development
 
-The selected Machine Learning model was integrated into a Django REST Framework backend, enabling external applications to request predictions through RESTful endpoints.
+The selected Machine Learning model was integrated into a Django REST Framework backend.
+
+The backend acts as the bridge between the Machine Learning pipeline and external applications.
 
 ---
 
-## Backend Features
+# Backend Objectives
 
-Implemented:
+The backend was designed to:
 
-- Django project setup
-- Django REST Framework configuration
-- Prediction application
-- Model loading system
-- Text preprocessing pipeline
-- Inference pipeline
-- REST API endpoint
-- Request validation
-- Exception handling
-- API testing with Postman
+* Load the trained ML model.
+* Accept user text input.
+* Validate incoming requests.
+* Preprocess Nigerian Pidgin text.
+* Generate predictions.
+* Return structured JSON responses.
+
+---
+
+# Backend Technology Stack
+
+| Technology            | Purpose                      |
+| --------------------- | ---------------------------- |
+| Django                | Backend framework            |
+| Django REST Framework | API development              |
+| Gunicorn              | Production server            |
+| Django CORS Headers   | Frontend communication       |
+| Joblib                | Model loading                |
+| Python                | Backend programming language |
 
 ---
 
 # Backend Architecture
 
-Prediction flow:
+Prediction request flow:
 
 ```text
 User Input
@@ -458,7 +792,7 @@ REST API Endpoint
 
 ↓
 
-Serializer Validation
+Request Serializer Validation
 
 ↓
 
@@ -466,19 +800,23 @@ Text Preprocessing
 
 ↓
 
-TF-IDF Vectorizer
+TF-IDF Vectorization
 
 ↓
 
-LinearSVC Model
+LinearSVC Model Prediction
 
 ↓
 
-Label Decoder
+Label Decoding
 
 ↓
 
 JSON Response
+
+↓
+
+Frontend Display
 ```
 
 ---
@@ -501,17 +839,16 @@ backend/
 │   ├── urls.py
 │   └── views.py
 │
-├── Procfile
 ├── manage.py
-├── requirements.txt
-└── .env
+├── Procfile
+└── requirements.txt
 ```
 
 ---
 
 # REST API Endpoint
 
-### Endpoint
+## Prediction Endpoint
 
 ```http
 POST /api/v1/predict/
@@ -519,24 +856,28 @@ POST /api/v1/predict/
 
 ---
 
-### Request Example
+# API Request
+
+Example:
 
 ```json
 {
-    "text": "I love this movie, e sweet well well"
+    "text": "omo, dis babe fine oo"
 }
 ```
 
 ---
 
-### Successful Response
+# API Response
+
+Successful response:
 
 ```json
 {
     "success": true,
     "message": "Prediction completed successfully.",
     "data": {
-        "text": "I love this movie, e sweet well well",
+        "text": "omo, dis babe fine oo",
         "prediction": "positive"
     }
 }
@@ -544,7 +885,27 @@ POST /api/v1/predict/
 
 ---
 
-### Error Response Example
+# API Validation
+
+The backend validates:
+
+* Empty requests.
+* Missing text fields.
+* Invalid input types.
+* Prediction errors.
+* Unexpected server exceptions.
+
+---
+
+# Error Response Example
+
+Request:
+
+```json
+{}
+```
+
+Response:
 
 ```json
 {
@@ -560,83 +921,73 @@ POST /api/v1/predict/
 
 ---
 
-# API Validation
-
-The backend validates:
-
-- Missing text input
-- Empty requests
-- Invalid data types
-- Internal inference errors
-- Unexpected server exceptions
-
----
-
 # Backend Testing
 
-The API was successfully tested using:
+The API was tested using:
 
-- Django Development Server
-- Postman
-- React Frontend
-- Production deployment on Render
+* Django development server.
+* Postman.
+* React frontend integration.
+* Production deployment environment.
 
-Example prediction:
+Successful test example:
 
-**Input**
+Input:
 
 ```text
-I love this movie, e sweet well well
+omo, dis babe fine oo
 ```
 
-**Prediction**
+Response:
 
 ```text
-😊 Positive
+positive
 ```
 
 ---
 
-## Phase 7 Status
+# Phase 7 Status
 
 Completed:
 
-- Django REST Framework integration
-- Machine Learning model loading
-- TF-IDF inference pipeline
-- Prediction endpoint
-- Request validation
-- Error handling
-- API testing
-- Production-ready backend
+* Django REST Framework setup.
+* Model loading system.
+* NLP inference pipeline.
+* Prediction endpoint.
+* Request validation.
+* Exception handling.
+* Postman testing.
+* Production-ready backend.
 
-**Status:** ✅ Completed
+Status:
 
----
+✅ Completed
+
 
 # Phase 8 — Frontend Application Development (React + Vite)
 
-To provide an intuitive user experience, a modern frontend application was developed using **React** and **Vite**. The frontend communicates with the Django REST API and allows users to analyze Nigerian Pidgin text through a clean and responsive web interface.
+After completing the Machine Learning pipeline and backend API, a modern frontend application was developed to provide users with an accessible interface for interacting with the Nigerian Pidgin Sentiment Analyzer.
 
-The frontend transforms the Machine Learning model from a backend service into an interactive AI application that anyone can use.
+The frontend transforms the Machine Learning model from a backend service into a complete user-facing AI application.
+
+The frontend allows users to:
+
+* Enter Nigerian Pidgin text.
+* Submit text for sentiment analysis.
+* Receive real-time predictions.
+* View sentiment results through an interactive interface.
 
 ---
 
-# Frontend Features
+# Frontend Technology Stack
 
-Implemented:
-
-- React application setup using Vite
-- Component-based architecture
-- Axios API integration
-- Responsive user interface
-- Prediction form
-- Loading animation
-- Error handling
-- Prediction result card
-- Production-ready API configuration
-
-**Status:** ✅ Completed
+| Technology        | Purpose                 |
+| ----------------- | ----------------------- |
+| React             | Frontend user interface |
+| Vite              | Frontend build tool     |
+| Axios             | API communication       |
+| JavaScript (ES6+) | Application logic       |
+| CSS3              | Styling and layout      |
 
 ---
 
@@ -653,11 +1004,11 @@ React Application
 
 ↓
 
-Prediction Form
+Prediction Form Component
 
 ↓
 
-Axios HTTP Request
+Axios HTTP Client
 
 ↓
 
@@ -673,7 +1024,7 @@ Prediction Response
 
 ↓
 
-Prediction Result Card
+Prediction Result Component
 ```
 
 ---
@@ -685,23 +1036,23 @@ frontend/
 
 ├── src/
 │
-├── api/
-│   └── axios.js
-│
-├── components/
-│   ├── PredictionForm.jsx
-│   ├── PredictionCard.jsx
-│   ├── Loader.jsx
-│   └── ErrorMessage.jsx
-│
-├── pages/
-│   └── Home.jsx
-│
-├── styles/
-│   └── app.css
-│
-├── App.jsx
-├── main.jsx
+│   ├── api/
+│   │   └── axios.js
+│   │
+│   ├── components/
+│   │   ├── PredictionForm.jsx
+│   │   ├── PredictionCard.jsx
+│   │   ├── Loader.jsx
+│   │   └── ErrorMessage.jsx
+│   │
+│   ├── pages/
+│   │   └── Home.jsx
+│   │
+│   ├── styles/
+│   │   └── app.css
+│   │
+│   ├── App.jsx
+│   └── main.jsx
 │
 ├── package.json
 └── vite.config.js
@@ -711,48 +1062,55 @@ frontend/
 
 # React Components
 
-## PredictionForm
+## PredictionForm Component
 
-Responsibilities:
+The main interaction component responsible for:
 
-- Accepts user text input
-- Validates user input
-- Sends prediction requests
-- Displays loading animation
-- Receives API response
+* Capturing user input.
+* Validating text.
+* Sending API requests.
+* Managing loading states.
+* Handling API responses.
+
+Example input:
+
+```text
+omo, dis babe fine oo
+```
 
 ---
 
-## PredictionCard
+## PredictionCard Component
 
-Displays:
-
-- Original text
-- Predicted sentiment
-- Friendly sentiment icon
-- Success message
+Displays the sentiment prediction result.
 
 Example:
 
-```
+```text
 😊 Positive
 
-"I love this movie, e sweet well well"
+"omo, dis babe fine oo"
 ```
+
+Responsibilities:
+
+* Display predicted sentiment.
+* Show the analyzed text.
+* Provide clear user feedback.
 
 ---
 
 ## Loader Component
 
-Provides visual feedback while prediction is being processed.
+Provides visual feedback while the Machine Learning model processes the request.
 
-Example message:
+Example:
 
-```
+```text
 Analyzing sentiment...
 ```
 
-This improves user experience by indicating that the prediction request is in progress.
+This improves user experience by showing that the application is actively processing the request.
 
 ---
 
@@ -760,174 +1118,259 @@ This improves user experience by indicating that the prediction request is in pr
 
 Handles application errors including:
 
-- Empty input
-- API errors
-- Network failures
-- Server exceptions
+* Empty input.
+* Invalid requests.
+* Network failures.
+* Backend connection errors.
 
 Example:
 
-```
-Unable to analyze sentiment.
-
-Please try again.
+```text
+Unable to connect to prediction server.
 ```
 
 ---
 
-# API Communication
+# API Integration
 
 The frontend communicates with the Django backend using Axios.
 
-Request flow:
+The API configuration is stored in:
 
+```text
+src/api/axios.js
 ```
-React
 
-↓
+Example configuration:
 
-Axios
+```javascript
+import axios from "axios";
 
-↓
+const api = axios.create({
+    baseURL: import.meta.env.VITE_API_BASE_URL,
+    headers: {
+        "Content-Type": "application/json",
+    },
+    timeout: 10000,
+});
 
-POST Request
-
-↓
-
-Render API
-
-↓
-
-Prediction
-
-↓
-
-JSON Response
-
-↓
-
-React UI Update
+export default api;
 ```
 
 ---
 
-# User Experience
+# Environment Configuration
 
-The application provides:
+The frontend uses environment variables to manage API URLs.
 
-- Clean interface
-- Responsive layout
-- Fast predictions
-- Friendly sentiment display
-- Error notifications
-- Loading indicators
+Production configuration:
 
-The interface was intentionally kept simple to ensure users focus on text prediction without unnecessary distractions.
+```env
+VITE_API_BASE_URL=https://nigerian-pidgin-sentiment-analyzer.onrender.com
+```
+
+This allows the frontend to communicate with the deployed Django API.
 
 ---
 
-# Example Prediction
+# User Prediction Workflow
 
-Input:
+The complete user workflow:
 
+```text
+User enters Nigerian Pidgin text
+
+↓
+
+Frontend validates input
+
+↓
+
+Axios sends POST request
+
+↓
+
+Django API receives request
+
+↓
+
+ML pipeline processes text
+
+↓
+
+Model predicts sentiment
+
+↓
+
+API returns JSON response
+
+↓
+
+React displays result
 ```
-I love this movie, e sweet well well
+
+---
+
+# Example User Interaction
+
+## Input
+
+```text
+omo, dis babe fine oo
 ```
 
-Output:
+## Processing
 
+The system performs:
+
+```text
+Text Cleaning
+
+↓
+
+TF-IDF Transformation
+
+↓
+
+LinearSVC Prediction
+
+↓
+
+Sentiment Label Decoding
 ```
+
+## Output
+
+```text
 😊 Positive
 ```
 
 ---
 
-Input:
+# Frontend Features Implemented
 
-```
-This thing no make sense at all.
-```
+Completed:
 
-Output:
+* React + Vite setup.
+* Component-based architecture.
+* API integration with Axios.
+* Input validation.
+* Loading state.
+* Error handling.
+* Prediction display.
+* Responsive user interface.
+* Production API configuration.
 
-```
-😠 Negative
-```
+Status:
 
----
-
-Input:
-
-```
-Today na Monday.
-```
-
-Output:
-
-```
-😐 Neutral
-```
-
----
-
-# Frontend Technologies
-
-- React
-- Vite
-- Axios
-- CSS3
-- JavaScript (ES6)
+✅ Completed
 
 ---
 
 # Phase 9 — Production Deployment
 
-The completed AI application was prepared for deployment to make it publicly accessible.
+The complete AI application was prepared for public access by deploying both backend and frontend services.
 
-Deployment included both backend and frontend preparation.
+The final deployment architecture consists of:
 
----
-
-## Deployment Objectives
-
-- Host the Machine Learning API online
-- Enable external API access
-- Connect React frontend to production API
-- Configure production environment variables
-- Prepare the application for demonstration and portfolio use
+* Backend API hosted on Render.
+* Frontend application hosted on Vercel.
+* Machine Learning model served through Django REST API.
 
 ---
 
-# Backend Deployment
+# Deployment Architecture
 
-The Django REST API was deployed using **Render**.
+```text
+                  User
 
-Deployment configuration included:
+                   |
 
-- GitHub repository connection
-- Procfile configuration
-- Gunicorn application server
-- Environment variable configuration
-- Static files collection
-- Production settings
+                   ↓
 
----
+        Vercel React Frontend
 
-## Procfile
+                   |
 
-The application uses Gunicorn as the production WSGI server.
+                   ↓
 
+        Axios API Request
+
+                   |
+
+                   ↓
+
+       Render Django REST API
+
+                   |
+
+                   ↓
+
+        NLP Processing Pipeline
+
+                   |
+
+                   ↓
+
+       TF-IDF Vectorizer
+
+                   |
+
+                   ↓
+
+          LinearSVC Model
+
+                   |
+
+                   ↓
+
+        Sentiment Prediction
 ```
+
+---
+
+# Backend Deployment (Render)
+
+The Django REST API was deployed using:
+
+## Hosting Platform
+
+```text
+Render Web Service
+```
+
+---
+
+# Backend Deployment Configuration
+
+The deployment included:
+
+* GitHub repository integration.
+* Gunicorn production server.
+* Environment variable management.
+* Static file configuration.
+* Production security settings.
+* CORS configuration.
+
+---
+
+# Production Server
+
+The backend uses Gunicorn:
+
+```bash
 web: gunicorn config.wsgi:application
 ```
 
+Gunicorn provides a production-ready WSGI server for Django applications.
+
 ---
 
-# Production Environment Variables
+# Backend Environment Variables
 
-Configured variables include:
+Configured production variables:
 
-```
+```text
 SECRET_KEY
 
 DEBUG
@@ -937,175 +1380,271 @@ ALLOWED_HOSTS
 CORS_ALLOWED_ORIGINS
 ```
 
-Sensitive credentials are stored securely using Render Environment Variables and excluded from version control.
+Sensitive information is stored securely through Render Environment Variables and excluded from GitHub.
 
 ---
 
-# Production Configuration
+# CORS Configuration
 
-Implemented:
+To allow communication between the React frontend and Django backend, production CORS configuration was implemented.
 
-- DEBUG=False
-- Environment variable management
-- Secure SECRET_KEY
-- Allowed hosts configuration
-- CORS configuration
-- Static file collection
-- Production-ready Gunicorn server
+Allowed frontend origin:
 
----
-
-# Render Deployment
-
-The Django backend was successfully deployed as a Render Web Service.
-
-Deployment steps included:
-
-- Connecting GitHub repository
-- Selecting backend as Root Directory
-- Installing dependencies
-- Configuring Build Command
-- Configuring Start Command
-- Setting Environment Variables
-- Automatic deployment from GitHub
-
----
-
-# API Testing
-
-The deployed API was successfully tested using:
-
-- Postman
-- Browser
-- React frontend
-
-The production endpoint returned successful predictions after deployment.
-
-Example:
-
-Request
-
-```json
-{
-    "text":"I love this movie, e sweet well well"
-}
+```text
+https://nigerian-pidgin-sentiment-analyzer-r1jv0t6hq.vercel.app
 ```
 
-Response
-
-```json
-{
-  "success": true,
-  "message": "Prediction completed successfully.",
-  "data": {
-      "prediction":"positive"
-  }
-}
-```
+This enables secure cross-origin API requests.
 
 ---
 
-# Frontend Deployment
-
-The React application has been prepared for deployment.
+# Backend Deployment Status
 
 Completed:
 
-- Axios configuration
-- Environment preparation
-- Production API integration
+* Django deployment.
+* Gunicorn configuration.
+* Environment setup.
+* Production API testing.
+* CORS configuration.
+* Live prediction verification.
 
-Next step:
+Status:
 
-Deploy the frontend using:
+✅ Completed
 
-- Render Static Site
-or
+---
 
-- Vercel
+# Frontend Deployment (Vercel)
 
-After deployment, the frontend will communicate directly with the live Django API hosted on Render.
+The React application was deployed using:
+
+```text
+Vercel
+```
+
+---
+
+# Frontend Deployment Configuration
+
+Deployment steps included:
+
+* Connecting GitHub repository.
+* Selecting frontend directory.
+* Configuring Vite build settings.
+* Adding production environment variables.
+* Building production assets.
+* Deploying the application.
+
+---
+
+# Production Build
+
+The application was successfully built using:
+
+```bash
+npm run build
+```
+
+Build output:
+
+```text
+✓ built successfully
+```
+
+---
+
+# Live Application
+
+## Frontend Application
+
+Live URL:
+
+```text
+https://nigerian-pidgin-sentiment-analyzer-r1jv0t6hq.vercel.app
+```
+
+---
+
+## Backend API
+
+Live API:
+
+```text
+https://nigerian-pidgin-sentiment-analyzer.onrender.com
+```
+
+Prediction endpoint:
+
+```http
+POST /api/v1/predict/
+```
+
+---
+
+# Production Testing
+
+The deployed application was tested through:
+
+* Postman API testing.
+* Browser testing.
+* React frontend interaction.
+* Production API requests.
+
+Example:
+
+Request:
+
+```json
+{
+    "text": "omo, dis babe fine oo"
+}
+```
+
+Response:
+
+```json
+{
+    "success": true,
+    "message": "Prediction completed successfully.",
+    "data": {
+        "text": "omo, dis babe fine oo",
+        "prediction": "positive"
+    }
+}
+```
 
 ---
 
 # Current Deployment Status
 
-| Component | Status |
-|-----------|--------|
-| Machine Learning Model | ✅ Completed |
-| Django Backend | ✅ Completed |
-| REST API | ✅ Completed |
-| React Frontend | ✅ Completed |
-| Backend Deployment | ✅ Completed |
-| Production API Testing | ✅ Completed |
-| Frontend Deployment | ⏳ Ready to Deploy |
+| Component                  | Status      |
+| -------------------------- | ----------- |
+| Dataset Processing         | ✅ Completed |
+| NLP Pipeline               | ✅ Completed |
+| Machine Learning Model     | ✅ Completed |
+| Model Deployment           | ✅ Completed |
+| Django REST API            | ✅ Completed |
+| React Frontend             | ✅ Completed |
+| Render Backend Deployment  | ✅ Completed |
+| Vercel Frontend Deployment | ✅ Completed |
+| End-to-End Testing         | ✅ Completed |
 
 ---
+
+# Production Milestone
+
+## Full-Stack AI Application Deployment Completed
+
+The project has successfully progressed from an experimental Machine Learning notebook into a fully deployed Artificial Intelligence application.
+
+Completed capabilities:
+
+* Data pipeline.
+* NLP preprocessing.
+* Machine Learning classification.
+* REST API integration.
+* Frontend interaction.
+* Cloud deployment.
+* Public accessibility.
+
+Status:
+
+✅ Production Ready
+
 
 # Technologies Used
 
-## Programming Languages
-
-- Python
-- JavaScript
-- HTML5
-- CSS3
+The project combines multiple technologies across Machine Learning, backend development, frontend engineering, and cloud deployment.
 
 ---
 
-## Machine Learning & NLP
+# Programming Languages
 
-- Scikit-learn
-- Pandas
-- NumPy
-- NLTK
-- Joblib
-- Matplotlib
-- WordCloud
-
----
-
-## Backend
-
-- Django
-- Django REST Framework
-- Gunicorn
-- Django CORS Headers
+| Technology | Usage                                                     |
+| ---------- | --------------------------------------------------------- |
+| Python     | Machine Learning pipeline, NLP processing, Django backend |
+| JavaScript | React frontend development                                |
+| HTML5      | Frontend structure                                        |
+| CSS3       | User interface styling                                    |
 
 ---
 
-## Frontend
+# Machine Learning & NLP Technologies
 
-- React
-- Vite
-- Axios
-
----
-
-## Development Tools
-
-- Visual Studio Code
-- Jupyter Notebook
-- Postman
-- Git
-- GitHub
+| Technology   | Purpose                               |
+| ------------ | ------------------------------------- |
+| Scikit-learn | Machine Learning model development    |
+| Pandas       | Data manipulation and analysis        |
+| NumPy        | Numerical computation                 |
+| NLTK         | Natural Language Processing utilities |
+| Joblib       | Model serialization                   |
+| Matplotlib   | Data visualization                    |
+| WordCloud    | Text visualization                    |
 
 ---
 
-## Cloud & Deployment
+# Backend Technologies
 
-- Render (Backend Deployment)
-- Render Environment Variables
-- Gunicorn WSGI Server
+| Technology            | Purpose                         |
+| --------------------- | ------------------------------- |
+| Django                | Backend web framework           |
+| Django REST Framework | REST API development            |
+| Gunicorn              | Production WSGI server          |
+| django-cors-headers   | Cross-origin API communication  |
+| Python Decouple       | Environment variable management |
+
+---
+
+# Frontend Technologies
+
+| Technology      | Purpose                    |
+| --------------- | -------------------------- |
+| React           | User interface development |
+| Vite            | Frontend build tooling     |
+| Axios           | HTTP communication         |
+| JavaScript ES6+ | Application logic          |
+| CSS3            | Styling                    |
+
+---
+
+# Development Tools
+
+| Tool               | Usage                             |
+| ------------------ | --------------------------------- |
+| Visual Studio Code | Code development                  |
+| Jupyter Notebook   | Data analysis and experimentation |
+| Postman            | API testing                       |
+| Git                | Version control                   |
+| GitHub             | Repository management             |
+
+---
+
+# Cloud & Deployment Technologies
+
+| Technology            | Purpose                         |
+| --------------------- | ------------------------------- |
+| Render                | Django backend hosting          |
+| Vercel                | React frontend hosting          |
+| Gunicorn              | Production application server   |
+| Environment Variables | Secure production configuration |
 
 ---
 
 # End-to-End AI Application Workflow
 
-The application follows a complete Machine Learning workflow:
+The application follows a complete Machine Learning product development lifecycle.
 
-```
-Problem Definition
+```text
+Problem Identification
+
+↓
+
+Product Discovery
+
+↓
+
+Requirements Analysis
 
 ↓
 
@@ -1130,6 +1669,10 @@ Exploratory Data Analysis
 ↓
 
 Feature Engineering
+
+↓
+
+TF-IDF Vectorization
 
 ↓
 
@@ -1165,7 +1708,7 @@ Frontend Integration
 
 ↓
 
-Production Deployment
+Cloud Deployment
 
 ↓
 
@@ -1174,249 +1717,329 @@ Public AI Application
 
 ---
 
+# Application Request Flow
+
+When a user submits Nigerian Pidgin text, the complete prediction pipeline works as follows:
+
+```text
+User
+
+↓
+
+React Frontend
+
+↓
+
+Axios POST Request
+
+↓
+
+Django REST API
+
+↓
+
+Serializer Validation
+
+↓
+
+Text Preprocessing
+
+↓
+
+TF-IDF Vectorizer
+
+↓
+
+LinearSVC Model
+
+↓
+
+Sentiment Classification
+
+↓
+
+JSON Response
+
+↓
+
+User Interface Display
+```
+
+---
+
 # Project Roadmap
 
-## Completed
+## Completed Features
 
-- [x] Product Discovery
-- [x] Requirements Analysis
-- [x] Data Strategy & ML Design
-- [x] Project Setup
-- [x] Dataset Acquisition
-- [x] Data Validation
-- [x] Data Cleaning
-- [x] Text Preprocessing
-- [x] Exploratory Data Analysis
-- [x] Feature Engineering
-- [x] Machine Learning Model Training
-- [x] Model Evaluation
-- [x] Model Selection
-- [x] Model Export
-- [x] Django REST Framework Backend
-- [x] REST API Development
-- [x] API Testing
-- [x] React Frontend
-- [x] Frontend API Integration
-- [x] Responsive User Interface
-- [x] Backend Deployment on Render
-- [x] Production Environment Configuration
-- [x] Production API Testing
+The following milestones have been successfully completed:
 
----
-
-## In Progress
-
-- [ ] Frontend Deployment
-- [ ] Live Frontend Integration
-- [ ] Final Application Testing
-
----
-
-## Planned Improvements
-
-- [ ] Confidence Score Display
-- [ ] Prediction History
-- [ ] User Authentication
-- [ ] Batch Sentiment Prediction
-- [ ] Sentiment Analytics Dashboard
-- [ ] Docker Containerization
-- [ ] CI/CD Pipeline
-- [ ] PostgreSQL Integration
-- [ ] Redis Caching
-- [ ] Model Retraining Pipeline
-- [ ] Docker Compose Support
-- [ ] Kubernetes Deployment
-
----
-
-# Live Demo
-
-## Backend API
-
-**Status:** Live on Render
-
-**Base URL**
-
-```
-https://YOUR-RENDER-APP.onrender.com
-```
-
-Example endpoint:
-
-```
-POST /api/v1/predict/
-```
-
----
-
-## Frontend Application
-
-Deployment in progress.
-
-The live frontend URL will be added after deployment.
-
----
-
-# API Example
-
-## Request
-
-```json
-{
-    "text": "I love this movie, e sweet well well"
-}
-```
-
----
-
-## Response
-
-```json
-{
-    "success": true,
-    "message": "Prediction completed successfully.",
-    "data": {
-        "text": "I love this movie, e sweet well well",
-        "prediction": "positive"
-    }
-}
-```
-
----
-
-# Sample Predictions
-
-| Input | Prediction |
-|--------|------------|
-| I love this movie, e sweet well well | 😊 Positive |
-| This thing no make sense at all | 😠 Negative |
-| Today na Monday | 😐 Neutral |
-
----
-
-# Repository Status
-
-## Current Milestone
-
-### Day 5 — Backend Deployment Completed
-
-Completed during this milestone:
-
-- Production environment configuration
-- Procfile setup
-- Gunicorn configuration
-- Static files collection
-- Render Web Service deployment
-- Environment variable management
-- Backend production deployment
-- Live API testing
-- Successful production prediction requests
-
-Current project components:
-
-- ✅ Trained Machine Learning Model
-- ✅ TF-IDF Feature Engineering
-- ✅ Exported Model Artifacts
-- ✅ Django REST API
-- ✅ React Frontend
-- ✅ Production Backend Deployment
-- ✅ Live Prediction API
-- ✅ End-to-End AI Prediction Pipeline
-
----
-
-# Screenshots
-
-The following screenshots document the project's development journey and final application.
-
-## Machine Learning
-
-- Dataset validation
-- Data preprocessing
-- Exploratory Data Analysis
-- Model evaluation
-- Confusion Matrix
-- Classification Report
-
----
-
-## Backend
-
-- Django REST API
-- Postman API Testing
-- Successful Prediction Response
-
----
-
-## Frontend
-
-- Home Page
-- Prediction Interface
-- Loading State
-- Positive Prediction
-- Negative Prediction
-- Neutral Prediction
-
----
-
-## Deployment
-
-- Render Dashboard
-- Successful Deployment
-- Live API Testing
+* [x] Product Discovery
+* [x] Problem Definition
+* [x] Requirements Analysis
+* [x] Dataset Selection
+* [x] Dataset Acquisition
+* [x] Data Validation
+* [x] Data Cleaning
+* [x] Text Preprocessing
+* [x] Exploratory Data Analysis
+* [x] Feature Engineering
+* [x] TF-IDF Vectorization
+* [x] Machine Learning Model Training
+* [x] Model Evaluation
+* [x] Model Selection
+* [x] Model Export
+* [x] Django REST Framework Backend
+* [x] Prediction API Development
+* [x] API Validation
+* [x] Postman Testing
+* [x] React Frontend Development
+* [x] Axios API Integration
+* [x] User Interface Development
+* [x] Render Backend Deployment
+* [x] Vercel Frontend Deployment
+* [x] Production Testing
 
 ---
 
 # Future Improvements
 
-Future versions of the project may include:
+Although version 1.0 provides a complete working solution, future versions can introduce additional capabilities.
 
-- Deep Learning (LSTM/BERT)
-- Transformer-based NLP models
-- Explainable AI (XAI)
-- Real-time analytics
-- Mobile application
-- Speech-to-text sentiment analysis
-- Nigerian multilingual sentiment support
-- Continuous model retraining
+---
+
+## Machine Learning Improvements
+
+Potential improvements:
+
+* Experiment with transformer-based models.
+* Fine-tune BERT-style Nigerian language models.
+* Apply deep learning approaches such as LSTM networks.
+* Improve performance through larger datasets.
+* Implement automated model retraining pipelines.
+
+---
+
+## Application Features
+
+Future application features:
+
+* Confidence score display.
+* Prediction probability visualization.
+* User prediction history.
+* Batch sentiment analysis.
+* Sentiment analytics dashboard.
+* Export prediction reports.
+
+---
+
+## Infrastructure Improvements
+
+Future engineering improvements:
+
+* PostgreSQL database integration.
+* Redis caching.
+* Docker containerization.
+* Docker Compose deployment.
+* CI/CD automation.
+* Kubernetes deployment.
+* Cloud monitoring and logging.
+
+---
+
+## Language Expansion
+
+Future versions may support:
+
+* Yoruba sentiment analysis.
+* Hausa sentiment analysis.
+* Igbo sentiment analysis.
+* Multilingual Nigerian sentiment analysis.
+
+---
+
+# Screenshots
+
+Screenshots documenting the project development process should be included in this section.
+
+---
+
+# Machine Learning Screenshots
+
+Recommended screenshots:
+
+* Dataset validation notebook.
+* Data preprocessing results.
+* Exploratory Data Analysis charts.
+* WordCloud visualization.
+* Model comparison results.
+* Confusion matrix.
+* Classification report.
+
+---
+
+# Backend Screenshots
+
+Recommended screenshots:
+
+* Django project structure.
+* API endpoint.
+* Postman successful prediction request.
+* JSON API response.
+* Render deployment dashboard.
+
+---
+
+# Frontend Screenshots
+
+Recommended screenshots:
+
+* Application homepage.
+* Text input interface.
+* Loading state.
+* Positive sentiment prediction.
+* Negative sentiment prediction.
+* Neutral sentiment prediction.
+
+---
+
+# Deployment Screenshots
+
+Recommended screenshots:
+
+* Render deployment success.
+* Vercel deployment success.
+* Live application testing.
 
 ---
 
 # Acknowledgements
 
-Special appreciation to:
+Special appreciation goes to:
 
-- **3 Million Technical Talent (3MTT)** for providing the opportunity and learning platform.
-- The **NaijaSenti** project for making Nigerian language sentiment datasets available.
-- The open-source community behind Django, React, Scikit-learn, and related technologies.
+## 3 Million Technical Talent (3MTT)
+
+For providing the learning platform and opportunity to develop this Artificial Intelligence capstone project.
+
+---
+
+## NaijaSenti Dataset Contributors
+
+For making Nigerian language sentiment datasets available for research and development.
+
+---
+
+## Open Source Community
+
+Special appreciation to the developers and communities behind:
+
+* Django
+* Django REST Framework
+* React
+* Scikit-learn
+* Pandas
+* NumPy
+* NLTK
+* Vite
+
+These technologies made the development of this project possible.
 
 ---
 
 # Author
 
-**Abideen Adenekan**
+## Abideen Adenekan
 
 Backend Developer • AI/ML Engineer • 3MTT Fellow
 
-**GitHub**
+---
 
+## GitHub
+
+```text
 https://github.com/Habideen1
+```
 
-**LinkedIn**
+---
 
+## LinkedIn
+
+```text
 https://www.linkedin.com/in/abideen-adenekan/
+```
 
 ---
 
 # License
 
-This project was developed for educational, research, and portfolio purposes as part of the **3 Million Technical Talent (3MTT) AI/ML Capstone Project**.
+This project was developed for:
 
-You are free to study, fork, and build upon this project for learning purposes. Appropriate attribution is appreciated.
+* Educational purposes.
+* Research purposes.
+* Portfolio demonstration.
+* The 3MTT AI/ML Capstone Project.
+
+You are free to study, fork, and improve this project for learning purposes.
+
+Attribution is appreciated.
 
 ---
 
-## Project Status
+# Project Status
+
+## Nigerian Pidgin Sentiment Analyzer v1.0.0
+
+| Component              | Status             |
+| ---------------------- | ------------------ |
+| Data Pipeline          | ✅ Production Ready |
+| NLP Processing         | ✅ Production Ready |
+| Machine Learning Model | ✅ Production Ready |
+| Model Artifacts        | ✅ Available        |
+| Django REST API        | ✅ Production Ready |
+| React Frontend         | ✅ Production Ready |
+| Backend Deployment     | ✅ Live             |
+| Frontend Deployment    | ✅ Live             |
+| API Integration        | ✅ Completed        |
+| End-to-End Testing     | ✅ Completed        |
+
+---
+
+# Live Application
+
+## Frontend
+
+```text
+https://nigerian-pidgin-sentiment-analyzer-r1jv0t6hq.vercel.app
+```
+
+---
+
+## Backend API
+
+```text
+https://nigerian-pidgin-sentiment-analyzer.onrender.com
+```
+
+---
+
+## Prediction Endpoint
+
+```http
+POST
+
+/api/v1/predict/
+```
+
+---
+
+# Final Summary
+
+The Nigerian Pidgin Sentiment Analyzer demonstrates the complete development journey of a modern Artificial Intelligence application.
+
+From collecting and processing Nigerian language data, training Machine Learning models, exposing predictions through a REST API, building an interactive frontend, and deploying the system online, this project represents a complete end-to-end AI product.
+
+The application bridges the gap between Machine Learning research and practical user-facing technology by providing sentiment analysis capabilities for Nigerian Pidgin communication.
+
+---
 
 **Current Version:** v1.0.0
 
@@ -1424,7 +2047,7 @@ You are free to study, fork, and build upon this project for learning purposes. 
 
 **Backend:** Production Ready
 
-**Frontend:** Ready for Deployment
+**Frontend:** Production Ready
 
 **Machine Learning Pipeline:** Production Ready
 
