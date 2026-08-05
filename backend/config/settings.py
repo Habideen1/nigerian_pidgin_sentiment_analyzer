@@ -96,6 +96,10 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 X_FRAME_OPTIONS = "DENY"
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://nigerian-pidgin-sentiment-analyzer-r1jv0t6hq.vercel.app",
+]
+
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
